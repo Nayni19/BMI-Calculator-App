@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'gender.dart';
 import 'reusable_card.dart';
 import 'bottomContainer.dart';
-
-const activeCardColor = Color(0xFF323244);
-const inactiveCardColor = Color(0xFF24263b);
+import 'constants.dart';
+import 'sliderContainer.dart';
 
 enum Gender{
   Male, 
@@ -20,7 +19,7 @@ class _InputPageState extends State<InputPage> {
 
   Color maleCardColor = inactiveCardColor;
   Color femaleCardColor = inactiveCardColor;
-  
+
   Gender selectedGender = Gender.Male;
 
   @override
@@ -31,6 +30,7 @@ class _InputPageState extends State<InputPage> {
         centerTitle: true,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child:  Row(
@@ -51,7 +51,7 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Expanded(child: ReusableCard(color: inactiveCardColor,childWidget: Container(), onpress: (){}),),
+          Expanded(child: ReusableCard(color: inactiveCardColor,childWidget: CustomSlider(), onpress: (){}),),
           Expanded(
             child: Row(
              

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 
-const pinkColor = Color(0xFFe83d66);
-const bottomContainerHeight = 80.0;
 
 class BottomContainer extends StatelessWidget {
   const BottomContainer({super.key, required this.label});
