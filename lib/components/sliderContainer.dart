@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
-  
-
-
 class CustomSlider extends StatefulWidget {
-  const CustomSlider({super.key});
+  const CustomSlider({super.key, required this.sliderHandler});
+
+  final Function sliderHandler;
 
   @override
   State<CustomSlider> createState() => _CustomSliderState();
@@ -51,6 +50,7 @@ class _CustomSliderState extends State<CustomSlider> {
                   setState(() {
                     _currentSliderValue = value;
                     height = _currentSliderValue.toInt();
+                    widget.sliderHandler(height);
                   });
                 },
                 thumbColor: pinkColor,

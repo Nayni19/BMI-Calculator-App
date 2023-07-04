@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/calculator_brain.dart';
 import 'package:flutter/material.dart';
 import '../components/gender.dart';
 import '../components/reusable_card.dart';
@@ -12,6 +13,8 @@ enum Gender{
 }
 
 class InputPage extends StatefulWidget {
+  InputPage({required this.getValueHandler});
+  final Function getValueHandler;
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -25,6 +28,7 @@ class _InputPageState extends State<InputPage> {
 
   int weight = 40;
   int age = 20;
+  int height = 180;
 
   void increaseWeight (){
     setState(() {
@@ -50,8 +54,15 @@ class _InputPageState extends State<InputPage> {
     });
   }
 
+  void setHeight(int heightValue){
+    height = heightValue;
+  }
+
   void navigationHandler(){
+    CalculatorBrain calc = CalculatorBrain(weight: weight, height: height);
+    widget.getValueHandler(calc.CalculateBMI(), calc.CalculateWeight(), calc.Interpretation());
     Navigator.pushNamed(context, '/result');
+
   }
 
   @override
@@ -82,7 +93,7 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Expanded(child: ReusableCard(color: inactiveCardColor,childWidget: CustomSlider(), onpress: (){}),),
+          Expanded(child: ReusableCard(color: inactiveCardColor,childWidget: CustomSlider(sliderHandler: setHeight), onpress: (){}),),
           Expanded(
             child: Row(
              

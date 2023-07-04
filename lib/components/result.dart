@@ -2,7 +2,11 @@ import '../constants.dart';
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result({super.key});
+  const Result({super.key, required this.bmi, required this.weight, required this.interpret});
+
+  final String bmi;
+  final String weight;
+  final String interpret;
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +15,8 @@ class Result extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('OVERWEIGHT', style: greenLabel),
-          Text('280.4', style: resultLabel),
+          Text(weight.toUpperCase(), style: greenLabel),
+          Text(bmi, style: resultLabel),
           Column(
             children: [
               Text(
@@ -28,7 +32,7 @@ class Result extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('You are overweight, kindly reduce your weight.',
+            child: Text(interpret,
                 style: resultText, textAlign: TextAlign.center),
           )
         ],
